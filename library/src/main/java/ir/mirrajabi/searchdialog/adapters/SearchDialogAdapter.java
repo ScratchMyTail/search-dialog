@@ -22,8 +22,7 @@ import ir.mirrajabi.searchdialog.core.SearchResultListener;
 import ir.mirrajabi.searchdialog.core.Searchable;
 
 
-public class SearchDialogAdapter<T extends Searchable>
-	extends RecyclerView.Adapter<SearchDialogAdapter.ViewHolder> {
+public class SearchDialogAdapter<T extends Searchable> extends RecyclerView.Adapter<SearchDialogAdapter.ViewHolder> {
 	protected Context mContext;
 	private List<T> mItems = new ArrayList<>();
 	private LayoutInflater mLayoutInflater;
@@ -92,7 +91,7 @@ public class SearchDialogAdapter<T extends Searchable>
 	
 	@Override
 	public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-		View convertView = mLayoutInflater.inflate(mLayout, parent, false);
+		View convertView = mLayoutInflater.inflate(R.layout.search_item, parent, false);
 		convertView.setTag(new ViewHolder(convertView));
 		ViewHolder viewHolder = (ViewHolder) convertView.getTag();
 		return viewHolder;
@@ -110,7 +109,8 @@ public class SearchDialogAdapter<T extends Searchable>
 		if (mViewBinder != null) {
 			mViewBinder.bind(holder, object, position);
 		}
-		TextView text = holder.getViewById(android.R.id.text1);
+		TextView text = holder.getViewById(R.id.title);
+		TextView text2 = holder.getViewById(R.id.subtitle);
 		text.setTextColor(getColor(R.color.searchDialogResultColor));
 		if (mSearchTag != null && mHighlightPartsInCommon) {
 			text.setText(StringsHelper.highlightLCS(object.getTitle(), getSearchTag(),
@@ -119,7 +119,11 @@ public class SearchDialogAdapter<T extends Searchable>
 		} else {
 			text.setText(object.getTitle());
 		}
-		
+
+		if(object.getSubtitle().length() > 0){
+			text2.setText(object.getSubtitle());
+		}
+
 		if (mSearchResultListener != null) {
 			holder.getBaseView().setOnClickListener(new View.OnClickListener() {
 				@Override

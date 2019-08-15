@@ -31,7 +31,12 @@ public class UserModel implements Searchable {
 	public String getTitle() {
 		return mName + " " + mLastName;
 	}
-	
+
+	@Override
+	public String getSubtitle() {
+		return "Subtitle";
+	}
+
 	public int getAge() {
 		return mAge;
 	}

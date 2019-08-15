@@ -6,4 +6,5 @@ package ir.mirrajabi.searchdialog.core;
 
 public interface Searchable {
 	String getTitle();
+	String getSubtitle();
 }

@@ -18,7 +18,12 @@ public class SampleModel implements Searchable {
 	public String getTitle() {
 		return mTitle;
 	}
-	
+
+	@Override
+	public String getSubtitle() {
+		return "Subtitle";
+	}
+
 	public SampleModel setTitle(String title) {
 		mTitle = title;
 		return this;

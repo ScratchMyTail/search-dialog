@@ -20,7 +20,12 @@ public class ContactModel implements Searchable {
 	public String getTitle() {
 		return mName;
 	}
-	
+
+	@Override
+	public String getSubtitle() {
+		return "Subtitle";
+	}
+
 	public String getName() {
 		return mName;
 	}
