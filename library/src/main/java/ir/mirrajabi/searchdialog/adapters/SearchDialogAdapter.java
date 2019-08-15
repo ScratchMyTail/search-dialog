@@ -7,6 +7,7 @@ import android.support.annotation.IdRes;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -111,6 +112,7 @@ public class SearchDialogAdapter<T extends Searchable> extends RecyclerView.Adap
 		}
 		TextView text = holder.getViewById(R.id.title);
 		TextView text2 = holder.getViewById(R.id.subtitle);
+		View divider = holder.getViewById(R.id.divider);
 		text.setTextColor(getColor(R.color.searchDialogResultColor));
 		if (mSearchTag != null && mHighlightPartsInCommon) {
 			text.setText(StringsHelper.highlightLCS(object.getTitle(), getSearchTag(),
@@ -122,6 +124,13 @@ public class SearchDialogAdapter<T extends Searchable> extends RecyclerView.Adap
 
 		if(object.getSubtitle().length() > 0){
 			text2.setText(object.getSubtitle());
+		}
+		Log.d("YOLO", position+" "+mItems.size());
+		if(position == mItems.size()-1){
+			divider.setVisibility(View.GONE);
+		}
+		else{
+			divider.setVisibility(View.VISIBLE);
 		}
 
 		if (mSearchResultListener != null) {
