@@ -124,8 +124,12 @@ public class SearchDialogAdapter<T extends Searchable> extends RecyclerView.Adap
 
 		if(object.getSubtitle().length() > 0){
 			text2.setText(object.getSubtitle());
+			text2.setVisibility(View.VISIBLE);
 		}
-		Log.d("YOLO", position+" "+mItems.size());
+		else{
+			text2.setVisibility(View.GONE);
+		}
+
 		if(position == mItems.size()-1){
 			divider.setVisibility(View.GONE);
 		}
